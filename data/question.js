@@ -1,7 +1,7 @@
 const questions = [
     {
         "question": 1,
-        "msg":  "Patterson était-il bête?",
+        "msg": "Patterson s'est-il fait avoir?",
         "res1": "Vrai",
         "res2": "Faux",
         "response": "Vrai",
@@ -12,8 +12,56 @@ const questions = [
         "level": 1
     },
     {
-        "question": 1,
-        "msg":  "Patterson était-il bête?",
+        "question": 5,
+        "msg": "Patterson s'est-il fait avoir? (1)",
+        "res1": "Vrai",
+        "res2": "Faux",
+        "response": "Vrai",
+        "tip": "Voici une tip",
+        "ok": "OK MAN",
+        "nok": "NOK MAN",
+        "theme": "all",
+        "level": 1
+    },
+    {
+        "question": 4,
+        "msg": "Patterson s'est-il fait avoir? (2)",
+        "res1": "Vrai",
+        "res2": "Faux",
+        "response": "Vrai",
+        "tip": "Voici une tip",
+        "ok": "OK MAN",
+        "nok": "NOK MAN",
+        "theme": "all",
+        "level": 1
+    },
+    {
+        "question": 6,
+        "msg": "Patterson s'est-il fait avoir? (3)",
+        "res1": "Vrai",
+        "res2": "Faux",
+        "response": "Vrai",
+        "tip": "Voici une tip",
+        "ok": "OK MAN",
+        "nok": "NOK MAN",
+        "theme": "all",
+        "level": 1
+    },
+    {
+        "question": 7,
+        "msg": "Patterson s'est-il fait avoir? (4)",
+        "res1": "Vrai",
+        "res2": "Faux",
+        "response": "Vrai",
+        "tip": "Voici une tip",
+        "ok": "OK MAN",
+        "nok": "NOK MAN",
+        "theme": "all",
+        "level": 1
+    },
+    {
+        "question": 8,
+        "msg": "Patterson s'est-il fait avoir? (5)",
         "res1": "Vrai",
         "res2": "Faux",
         "response": "Vrai",

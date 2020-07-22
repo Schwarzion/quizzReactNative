@@ -20,7 +20,7 @@ export default class Game extends React.Component {
         console.log(questionByLevel)
         setTimeout(() => {
             this.setState({ questions: questionByLevel })
-        }, 500)
+        }, 2000)
     }
 
 
@@ -30,10 +30,6 @@ export default class Game extends React.Component {
 
     addScore() {
         this.setState({ score: this.state.score + 1 })
-    }
-
-    setMaxScore(max) {
-        this.setState({ maxScore: max })
     }
 
     checkAnswer(res) {
@@ -66,6 +62,7 @@ export default class Game extends React.Component {
                 let res2 = questionToAsk.res2
                 return (
                     <View style={styles.container}>
+                        <Text>Score : {this.state.score}</Text>
                         <Text>{questionToAsk.msg}</Text>
                         <Button title={questionToAsk.res1} onPress={() => { this.checkAnswer(res1) }}></Button>
                         <Button title={questionToAsk.res2} onPress={() => { this.checkAnswer(res2) }}></Button>
