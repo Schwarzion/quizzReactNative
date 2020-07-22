@@ -1,32 +1,52 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { questions } from '../data/question'
-import Question from './question'
-
 export default class Game extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             options: {},
             questions: [],
-            index: 0
+            index: 0,
+            score: 0,
         }
         this.state.options = this.props.route.params.options
     }
 
     componentDidMount() {
+        var questionByTheme = questions.filter(theme => theme.theme == this.state.options.theme)
+        console.log(questionByTheme)
+        var questionByLevel = questionByTheme.filter(quest => quest.level == this.state.options.level)
+        console.log(questionByLevel)
         setTimeout(() => {
-            this.setState({ questions: questions })
+            this.setState({ questions: questionByLevel })
         }, 500)
     }
 
 
-    checkAnswer(title) {
-        console.log(title)
-        // if (correct)
-        // {
-        //     this.state.index + 1
-        // }
+    addIndex() {
+        this.setState({ index: this.state.index + 1 })
+    }
+
+    addScore() {
+        this.setState({ score: this.state.score + 1 })
+    }
+
+    setMaxScore(max) {
+        this.setState({ maxScore: max })
+    }
+
+    checkAnswer(res) {
+        console.log(res)
+        if (res === this.state.questions[this.state.index].response) {
+            console.log("YES")
+            this.addIndex()
+            this.addScore()
+        }
+        else {
+            console.log("Nope")
+            this.addIndex()
+        }
     }
 
     render() {
@@ -40,17 +60,25 @@ export default class Game extends React.Component {
             )
         }
         else {
-            let questionToAsk = this.state.questions[this.state.index]
-            console.log(questionToAsk)
-            return (
-                <View style={styles.container}>
+            if (this.state.questions[this.state.index] != undefined) {
+                let questionToAsk = this.state.questions[this.state.index]
+                let res1 = questionToAsk.res1
+                let res2 = questionToAsk.res2
+                return (
                     <View style={styles.container}>
                         <Text>{questionToAsk.msg}</Text>
-                        <Button title="Vrai" onPress={() => { this.checkAnswer({ value }) }}></Button>
-                        <Button title="Faux" onPress={() => { this.checkAnswer({ value }) }}></Button>
+                        <Button title={questionToAsk.res1} onPress={() => { this.checkAnswer(res1) }}></Button>
+                        <Button title={questionToAsk.res2} onPress={() => { this.checkAnswer(res2) }}></Button>
                     </View>
-                </View>
-            )
+                )
+            }
+            else {
+                return (
+                    <View style={styles.container}>
+                        <Text>Score : {this.state.score} / {this.state.questions.length}</Text>
+                    </View>
+                )
+            }
         }
     }
 }
@@ -61,8 +89,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'space-around',
-        button: {
-            flexDirection: "row"
-        }
     }
 })
